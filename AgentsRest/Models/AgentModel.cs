@@ -1,9 +1,11 @@
-﻿namespace AgentsRest.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace AgentsRest.Models
 {
-    public enum Status
+    public enum AgentStatus
     {
-        IsActive = 1,
-        IsInactive = 0
+        Sleping,
+        Active
     }
 
 
@@ -13,14 +15,15 @@
     {
         public int Id { get; set; }
 
-        public string Image {   get; set; }
+        public required string Image {   get; set; }
 
-        public string NickName { get; set; }
+        public required string NickName { get; set; }
 
         public int X { get; set; } = -1;
         public int Y { get; set; } = -1;
 
-        public int Status { get; set; }
+        public AgentStatus Status { get; set; } = AgentStatus.Sleping;
 
+       public List<MissionModel> Missions { get; set; } = [];
     }
 }
