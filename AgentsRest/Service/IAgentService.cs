@@ -13,5 +13,6 @@ namespace AgentsRest.Service
 
         Task UpdateAgentAsync(int id, LocationDto locationDto);
 
+        Task UpdateAgentDirectionAsync(int id, DirectionDto directionDto);
     }
 }

@@ -9,12 +9,12 @@ namespace AgentsRest.Controllers
     [ApiController]
     public class MissionController(IMissionService missionService) : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("missions")]
         public async Task<IActionResult> GetAllMission()
         {
             return Ok(await missionService.GetAllMissions());
         }
-        [HttpPut("UpdateMission{id}")]
+        [HttpPut("missions/{id}")]
         public async Task<IActionResult> UpdateMission(int id, [FromBody] StatusDto statusDto )
         {
             try
@@ -23,6 +23,20 @@ namespace AgentsRest.Controllers
                 return Ok();
             }
             catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+        }
+        [HttpPost("missions/update")]
+        public async Task<IActionResult> AgentsChasesTargets()
+        {
+            try
+            {
+                await missionService.AgentsChasesTargets();
+                return Ok();
+            }
+            catch (Exception ex) 
             {
                 return BadRequest(ex.Message);
 

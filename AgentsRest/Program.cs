@@ -21,6 +21,7 @@ namespace AgentsRest
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<IAgentService, AgentService>();
             builder.Services.AddScoped<ITargetService, TargetService>();
+            builder.Services.AddTransient(typeof(Lazy<>), typeof(Lazy<>));
             builder.Services.AddScoped<IMissionService, MissionService>();
             builder.Services.AddDbContext<ApplicationDbContext>();
 

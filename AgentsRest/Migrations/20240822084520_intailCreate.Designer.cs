@@ -12,8 +12,8 @@ using UserApi.Data;
 namespace AgentsRest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240822063009_intialCrate")]
-    partial class intialCrate
+    [Migration("20240822084520_intailCreate")]
+    partial class intailCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,7 +79,7 @@ namespace AgentsRest.Migrations
 
                     b.HasIndex("TargetId");
 
-                    b.ToTable("KillModel");
+                    b.ToTable("kills");
                 });
 
             modelBuilder.Entity("AgentsRest.Models.MissionModel", b =>
@@ -102,9 +102,6 @@ namespace AgentsRest.Migrations
 
                     b.Property<int>("TargetId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("TimeExecud")
-                        .HasColumnType("datetime2");
 
                     b.Property<double>("TimeLeft")
                         .HasColumnType("float");

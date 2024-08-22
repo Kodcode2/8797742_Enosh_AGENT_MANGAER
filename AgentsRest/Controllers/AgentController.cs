@@ -8,9 +8,9 @@ namespace AgentsRest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AgentController(IAgentService agentService) : ControllerBase
+    public class AgentController(IAgentService agentService, IMissionService _missionService) : ControllerBase
     {
-        [HttpGet("GetAllAgent")]
+        [HttpGet("agents")]
         public async Task<IActionResult> GetAllAgent()
         {
             return Ok(await agentService.GetAllAgentAsync());
@@ -20,7 +20,7 @@ namespace AgentsRest.Controllers
         {
             return Ok( await agentService.FindAgentByIdAsync(id));
         }
-        [HttpPost("CreateNewAgent")]
+        [HttpPost("agents")]
         public async Task<IActionResult> CreateNewAgent(AgentDto agentDto)
         {
             try
@@ -36,12 +36,28 @@ namespace AgentsRest.Controllers
             
 
         }
-        [HttpPut("UpdateAgent{id}/pin")]
+        [HttpPut("agents/{id}/pin")]
         public async Task<IActionResult> UpdateAgent(int id, [FromBody] LocationDto locationDto)
         {
             try
             {
                 await agentService.UpdateAgentAsync(id, locationDto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPut("agents/{id}/move")]
+        public async Task<IActionResult> UpdateAgentDirection(int id, [FromBody] DirectionDto directionDto)
+        
+        {
+            try
+            {
+                await agentService.UpdateAgentDirectionAsync(id, directionDto);
+
+                
                 return Ok();
             }
             catch (Exception ex)

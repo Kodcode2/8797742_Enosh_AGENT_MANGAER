@@ -20,8 +20,6 @@
 
         public double  TimeLeft { get; set; }
 
-        public DateTime TimeExecud {  get; set; }
-
         public MissionStatus MissionStatus { get; set; } = MissionStatus.IntialContract;
 
         public DateTime MissionCompletedTime { get; set; }

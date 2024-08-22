@@ -5,38 +5,37 @@ using UserApi.Data;
 
 namespace AgentsRest.Service
 {
-    public class AgentService : IAgentService
+    public class AgentService(ApplicationDbContext context, IServiceProvider serviceProvider) : IAgentService
     {
-        private readonly ApplicationDbContext _context;
-        public AgentService(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+
+
+
+        private IMissionService _missionService = serviceProvider.GetRequiredService<IMissionService>();
 
         public async Task<AgentModel?> CreateNewAgentAsync(AgentDto agentDto)
         {
-            var exists = await _context.Agents.FirstOrDefaultAsync(x => x.Image == agentDto.Photo_url);
+            var exists = await context.Agents.FirstOrDefaultAsync(x => x.Image == agentDto.Photo_url);
             if (exists != null) { throw new Exception($" Agent with the Image {agentDto.Photo_url} is alraedy exists"); }
             AgentModel agentModel = new AgentModel()
             { 
                 Image = agentDto.Photo_url,
                 NickName = agentDto.Nickname
             };
-            await _context.Agents.AddAsync(agentModel);
-            await _context.SaveChangesAsync();
+            await context.Agents.AddAsync(agentModel);
+            await context.SaveChangesAsync();
             return agentModel;
         }
 
         public async Task<AgentModel?> FindAgentByIdAsync(int id)
         {
-           AgentModel? agent =  await _context.Agents.FirstOrDefaultAsync(agent => agent.Id == id);
+           AgentModel? agent =  await context.Agents.FirstOrDefaultAsync(agent => agent.Id == id);
             if (agent == null) { return null; }
             return agent;
         }
 
         public async Task<List<AgentModel>> GetAllAgentAsync()
         {
-            return await _context.Agents.ToListAsync();
+            return await context.Agents.ToListAsync();
         }
 
         public async  Task UpdateAgentAsync(int id , LocationDto locationDto)
@@ -45,7 +44,44 @@ namespace AgentsRest.Service
             if (agent == null) { throw new Exception($" Agent with the id {id} dosent exists"); }
             agent.X = locationDto.X;
             agent.Y = locationDto.Y;
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
+        }
+        private readonly Dictionary<string, (int, int)> deriction = new()
+        {
+            {"nw" , (-1,1) },
+            {"n" , (0,1) },
+            { "ne" , (1,1) },
+            { "w" , (-1,0) },
+            { "e" , (1,0) },
+            { "sw" , (-1,-1) },
+            { "s" , (0,-1) },
+            { "se" , (1,-1) },
+        };
+
+        public async Task UpdateAgentDirectionAsync(int id, DirectionDto directionDto)
+        {
+            var agent = await FindAgentByIdAsync(id);
+            if (agent == null) { throw new Exception($" Agent with the id {id} dosent exists"); }
+            bool isExists = deriction.TryGetValue(directionDto.Direction, out var result);
+            if (!isExists)
+            {
+                throw new Exception($" The diraction {directionDto.Direction} is not in Dict");
+            }
+            if(agent.Status == AgentStatus.Active)
+            {
+                throw new Exception($" The Agent {agent.NickName} is Active");
+            }
+            var (x, y) = result;
+
+            if (agent.X + x < 0 || agent.Y + y < 0)
+            {
+                throw new Exception($" You cant go out from the matriza");
+            }
+            agent.X += x;
+            agent.Y += y;
+            await context.SaveChangesAsync();
+            await _missionService.CheakIfHaveMatchAgent(agent);
+            await _missionService.CheakIfHaveMissionNotRleventAgent(agent);
         }
     }
 }

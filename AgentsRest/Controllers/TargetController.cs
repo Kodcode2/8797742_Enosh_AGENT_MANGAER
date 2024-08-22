@@ -1,4 +1,5 @@
 ﻿using AgentsRest.Dto;
+using AgentsRest.Models;
 using AgentsRest.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,20 +8,20 @@ namespace AgentsRest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TargetController(ITargetService targetService) : ControllerBase
+    public class TargetController(ITargetService targetService,IMissionService _missionService) : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("targets")]
         public async Task<IActionResult> GetAllTargetAsync()
         {
-            return Ok(await targetService.GetAllTargets());
+            return Ok(await targetService.GetAllTargetsAsync());
         }
-        [HttpGet("GetAgentById")]
+        [HttpGet("GetTargetById")]
         public async Task<IActionResult> GetAgentById(int id)
         {
             return Ok(await targetService.FindTargetByIdAsync(id));
         }
 
-        [HttpPost("CreateNewTarget")]
+        [HttpPost("targets")]
         public async Task<IActionResult> CreateNewTarget(TargetDto targetDto)
         {
             try
@@ -36,7 +37,7 @@ namespace AgentsRest.Controllers
 
 
         }
-        [HttpPut("UpdateTarget{id}/pin")]
+        [HttpPut("targets/{id}/pin")]
         public async Task<IActionResult> UpdateTarget(int id, [FromBody] LocationDto locationDto)
         {
             try
@@ -49,12 +50,14 @@ namespace AgentsRest.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut("UpdateTarget{id}/move")]
+        [HttpPut("targets/{id}/move")]
         public async Task<IActionResult> UpdateTargetDirection(int id, [FromBody] DirectionDto directionDto)
         {
             try
             {
                 await targetService.UpdateTargetDirectionAsync(id, directionDto);
+                
+                
                 return Ok();
             }
             catch (Exception ex)

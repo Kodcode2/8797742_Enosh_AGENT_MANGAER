@@ -76,7 +76,7 @@ namespace AgentsRest.Migrations
 
                     b.HasIndex("TargetId");
 
-                    b.ToTable("KillModel");
+                    b.ToTable("kills");
                 });
 
             modelBuilder.Entity("AgentsRest.Models.MissionModel", b =>
@@ -99,9 +99,6 @@ namespace AgentsRest.Migrations
 
                     b.Property<int>("TargetId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("TimeExecud")
-                        .HasColumnType("datetime2");
 
                     b.Property<double>("TimeLeft")
                         .HasColumnType("float");

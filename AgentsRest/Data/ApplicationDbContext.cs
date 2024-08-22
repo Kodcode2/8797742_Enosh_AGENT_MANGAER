@@ -10,6 +10,10 @@ namespace UserApi.Data
             public DbSet<TargetModel> Targets { get; set; }
             public DbSet<MissionModel> Missions { get; set; }
 
+            public DbSet<KillModel> kills { get; set; }
+
+
+
 
 
 

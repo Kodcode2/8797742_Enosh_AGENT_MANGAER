@@ -5,7 +5,7 @@ namespace AgentsRest.Service
 {
     public interface ITargetService
     {
-        Task<List<TargetModel>> GetAllTargets();
+        Task<List<TargetModel>> GetAllTargetsAsync();
 
         Task<TargetModel?> FindTargetByIdAsync(int id);
 

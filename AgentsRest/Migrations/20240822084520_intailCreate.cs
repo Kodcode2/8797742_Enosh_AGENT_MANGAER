@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AgentsRest.Migrations
 {
     /// <inheritdoc />
-    public partial class intialCrate : Migration
+    public partial class intailCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,7 +47,7 @@ namespace AgentsRest.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "KillModel",
+                name: "kills",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -58,15 +58,15 @@ namespace AgentsRest.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_KillModel", x => x.Id);
+                    table.PrimaryKey("PK_kills", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_KillModel_Agents_AgentId",
+                        name: "FK_kills_Agents_AgentId",
                         column: x => x.AgentId,
                         principalTable: "Agents",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_KillModel_Targets_TargetId",
+                        name: "FK_kills_Targets_TargetId",
                         column: x => x.TargetId,
                         principalTable: "Targets",
                         principalColumn: "Id",
@@ -82,7 +82,6 @@ namespace AgentsRest.Migrations
                     AgentId = table.Column<int>(type: "int", nullable: false),
                     TargetId = table.Column<int>(type: "int", nullable: false),
                     TimeLeft = table.Column<double>(type: "float", nullable: false),
-                    TimeExecud = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MissionStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MissionCompletedTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -104,13 +103,13 @@ namespace AgentsRest.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_KillModel_AgentId",
-                table: "KillModel",
+                name: "IX_kills_AgentId",
+                table: "kills",
                 column: "AgentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_KillModel_TargetId",
-                table: "KillModel",
+                name: "IX_kills_TargetId",
+                table: "kills",
                 column: "TargetId");
 
             migrationBuilder.CreateIndex(
@@ -128,7 +127,7 @@ namespace AgentsRest.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "KillModel");
+                name: "kills");
 
             migrationBuilder.DropTable(
                 name: "Missions");
