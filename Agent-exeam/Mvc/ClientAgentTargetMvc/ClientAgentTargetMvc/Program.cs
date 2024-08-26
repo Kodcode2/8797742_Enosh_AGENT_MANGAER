@@ -1,4 +1,5 @@
 using ClientAgentTargetMvc.Services;
+using UserApi.Models;
 
 namespace ClientAgentTargetMvc
 {
@@ -15,6 +16,7 @@ namespace ClientAgentTargetMvc
             builder.Services.AddScoped<ITargetService , TargetService>();
             builder.Services.AddScoped<IMissionService , MissionService>();
 			builder.Services.AddScoped<IGridService, GridService>();
+			builder.Services.AddSingleton<Authentication>();
 
 			var app = builder.Build();
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\IMOE001\\source\\repos\\AgentsExam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc.csproj": {}
+    "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\Agent-exeam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\IMOE001\\source\\repos\\AgentsExam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc.csproj": {
+    "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\Agent-exeam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\IMOE001\\source\\repos\\AgentsExam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc.csproj",
+        "projectUniqueName": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\Agent-exeam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc.csproj",
         "projectName": "ClientAgentTargetMvc",
-        "projectPath": "C:\\Users\\IMOE001\\source\\repos\\AgentsExam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc.csproj",
+        "projectPath": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\Agent-exeam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc.csproj",
         "packagesPath": "C:\\Users\\IMOE001\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\IMOE001\\source\\repos\\AgentsExam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\obj\\",
+        "outputPath": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\Agent-exeam\\Mvc\\ClientAgentTargetMvc\\ClientAgentTargetMvc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

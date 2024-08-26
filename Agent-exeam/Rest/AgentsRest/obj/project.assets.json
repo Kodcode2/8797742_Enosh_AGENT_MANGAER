@@ -4295,11 +4295,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\AgentsRest\\AgentsRest.csproj",
+      "projectUniqueName": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\Agent-exeam\\Rest\\AgentsRest\\AgentsRest.csproj",
       "projectName": "AgentsRest",
-      "projectPath": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\AgentsRest\\AgentsRest.csproj",
+      "projectPath": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\Agent-exeam\\Rest\\AgentsRest\\AgentsRest.csproj",
       "packagesPath": "C:\\Users\\IMOE001\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\AgentsRest\\obj\\",
+      "outputPath": "C:\\Users\\IMOE001\\source\\repos\\8797742_Enosh_AGENT_MANGAER\\Agent-exeam\\Rest\\AgentsRest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
