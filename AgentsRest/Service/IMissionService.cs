@@ -13,11 +13,13 @@ namespace AgentsRest.Service
 
         Task CheakIfHaveMatchTarget(TargetModel target);
 
-        Task CheakIfHaveMatchAgent(AgentModel agent);
+        Task CheakIfHaveMatchAgent(AgentModel agent , int x , int y);
 
         Task CheakIfHaveMissionNotRleventAgent(AgentModel agent);
 
         Task CheakIfHaveMissionNotRleventTarget(TargetModel target);
         // Task<MissionModel> CreateNewMission(int agentId, int targetId);
+
+        Task<List<MissionDto>> GetMissionInclut();
     }
 }

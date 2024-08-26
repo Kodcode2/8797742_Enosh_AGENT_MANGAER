@@ -3,14 +3,18 @@ using AgentsRest.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AgentsRest.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
-    public class AgentController(IAgentService agentService, IMissionService _missionService) : ControllerBase
-    {
-        [HttpGet("agents")]
+    public class AgentsController(IServiceProvider serviceProvider) : ControllerBase
+    { 
+        private IMissionService missionService => serviceProvider.GetRequiredService<IMissionService>();
+        private IAgentService agentService => serviceProvider.GetRequiredService<IAgentService>();
+
+        [HttpGet]
         public async Task<IActionResult> GetAllAgent()
         {
             return Ok(await agentService.GetAllAgentAsync());
@@ -20,14 +24,13 @@ namespace AgentsRest.Controllers
         {
             return Ok( await agentService.FindAgentByIdAsync(id));
         }
-        [HttpPost("agents")]
+        [HttpPost]
         public async Task<IActionResult> CreateNewAgent(AgentDto agentDto)
         {
             try
             {
                 var agent = await agentService.CreateNewAgentAsync(agentDto);
-
-                return Created("new agent",agent?.Id);
+                return Created("new agent",new IdDto { Id = agent.Id});
             }   
             catch (Exception ex)
             {
@@ -36,7 +39,7 @@ namespace AgentsRest.Controllers
             
 
         }
-        [HttpPut("agents/{id}/pin")]
+        [HttpPut("{id}/pin")]
         public async Task<IActionResult> UpdateAgent(int id, [FromBody] LocationDto locationDto)
         {
             try
@@ -49,7 +52,7 @@ namespace AgentsRest.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut("agents/{id}/move")]
+        [HttpPut("{id}/move")]
         public async Task<IActionResult> UpdateAgentDirection(int id, [FromBody] DirectionDto directionDto)
         
         {

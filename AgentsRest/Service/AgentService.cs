@@ -10,15 +10,15 @@ namespace AgentsRest.Service
 
 
 
-        private IMissionService _missionService = serviceProvider.GetRequiredService<IMissionService>();
+        private IMissionService _missionService => serviceProvider.GetRequiredService<IMissionService>();
 
         public async Task<AgentModel?> CreateNewAgentAsync(AgentDto agentDto)
         {
-            var exists = await context.Agents.FirstOrDefaultAsync(x => x.Image == agentDto.Photo_url);
-            if (exists != null) { throw new Exception($" Agent with the Image {agentDto.Photo_url} is alraedy exists"); }
+            var exists = await context.Agents.Where(x => x.Image == agentDto.PhotoUrl).ToListAsync();
+            if (exists.Count > 0) { throw new Exception($" Agent with the Image {agentDto.PhotoUrl} is alraedy exists"); }
             AgentModel agentModel = new AgentModel()
             { 
-                Image = agentDto.Photo_url,
+                Image = agentDto.PhotoUrl,
                 NickName = agentDto.Nickname
             };
             await context.Agents.AddAsync(agentModel);
@@ -73,15 +73,13 @@ namespace AgentsRest.Service
             }
             var (x, y) = result;
 
-            if (agent.X + x < 0 || agent.Y + y < 0)
-            {
-                throw new Exception($" You cant go out from the matriza");
-            }
+            
+            await _missionService.CheakIfHaveMatchAgent(agent,x,y);
+            await _missionService.CheakIfHaveMissionNotRleventAgent(agent);
+
             agent.X += x;
             agent.Y += y;
             await context.SaveChangesAsync();
-            await _missionService.CheakIfHaveMatchAgent(agent);
-            await _missionService.CheakIfHaveMissionNotRleventAgent(agent);
         }
     }
 }

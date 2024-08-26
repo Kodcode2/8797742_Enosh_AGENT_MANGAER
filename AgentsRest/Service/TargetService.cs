@@ -8,16 +8,16 @@ namespace AgentsRest.Service
     public class TargetService(ApplicationDbContext context, IServiceProvider serviceProvider) : ITargetService
     {
 
-        private IMissionService _missionService = serviceProvider.GetRequiredService<IMissionService>();
+        private IMissionService _missionService => serviceProvider.GetRequiredService<IMissionService>();
             public async Task<TargetModel?> CreateNewTargetAsync(TargetDto targetDto)
         {
-            var exists = await context.Targets.FirstOrDefaultAsync(target => target.Image == targetDto.Photo_url);
-            if (exists != null) { throw new Exception($" Target with the Image {targetDto.Photo_url} is alraedy exists"); }
+            var exists = await context.Targets.Where(target => target.Image == targetDto.PhotoUrl).ToListAsync();
+            if (exists.Count > 0) { throw new Exception($" Target with the Image {targetDto.PhotoUrl} is alraedy exists"); }
             TargetModel targetModel = new TargetModel()
             {
                 TargetName = targetDto.Name,
                 Position = targetDto.Position,
-                Image = targetDto.Photo_url
+                Image = targetDto.PhotoUrl
             };
             await context.Targets.AddAsync(targetModel);
             await context.SaveChangesAsync();
@@ -56,28 +56,41 @@ namespace AgentsRest.Service
             await context.SaveChangesAsync();
         }
 
+        public bool CheackIfOutOfMatriza(int x,int y )
+        {
+            if (x < -1 || y < -1 || x > 1000 || y > 1000)
+            {
+
+            return true; 
+            }
+            return false;
+        }
+
         public async Task UpdateTargetDirectionAsync(int id, DirectionDto direction)
         {
             TargetModel target = await FindTargetByIdAsync(id) 
-            ?? throw new Exception($" Target with the id {id} dosent exists"); 
-
-            bool isExists = deriction.TryGetValue(direction.Direction, out var result);
-            if (!isExists)
+            ?? throw new Exception($" Target with the id {id} dosent exists");
+            if (target.Status == TargetStatus.Alive)
             {
-                throw new Exception($" The diraction {direction.Direction} is not in Dict");
-            }
-            var (x, y) = result;
-            if (target.X + x < 0 || target.Y + y < 0 || target.X + x > 1000 ||target.Y + y > 1000)
-            {
-                throw new Exception($" You cant go out from the matriza");
-            }
-            target.X += x;
-            target.Y += y;
-            await context.SaveChangesAsync();
 
-            await _missionService.CheakIfHaveMatchTarget(target);
-            await _missionService.CheakIfHaveMissionNotRleventTarget(target);
 
+                bool isExists = deriction.TryGetValue(direction.Direction, out var result);
+                if (!isExists)
+                {
+                    throw new Exception($" The diraction {direction.Direction} is not in Dict");
+                }
+                var (x, y) = result;
+
+                if (CheackIfOutOfMatriza(target.X + x, target.Y + y))
+                {
+                    throw new Exception($" You cant go out from the matriza");
+                }
+                target.X += x;
+                target.Y += y;
+                await _missionService.CheakIfHaveMissionNotRleventTarget(target);
+                await _missionService.CheakIfHaveMatchTarget(target);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

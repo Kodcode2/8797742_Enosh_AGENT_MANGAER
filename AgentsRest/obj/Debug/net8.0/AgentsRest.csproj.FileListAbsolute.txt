@@ -137,3 +137,4 @@ C:\Users\IMOE001\source\repos\8797742_Enosh_AGENT_MANGAER\AgentsRest\obj\Debug\n
 C:\Users\IMOE001\source\repos\8797742_Enosh_AGENT_MANGAER\AgentsRest\obj\Debug\net8.0\AgentsRest.pdb
 C:\Users\IMOE001\source\repos\8797742_Enosh_AGENT_MANGAER\AgentsRest\obj\Debug\net8.0\AgentsRest.genruntimeconfig.cache
 C:\Users\IMOE001\source\repos\8797742_Enosh_AGENT_MANGAER\AgentsRest\obj\Debug\net8.0\ref\AgentsRest.dll
+C:\Users\IMOE001\source\repos\8797742_Enosh_AGENT_MANGAER\AgentsRest\bin\Debug\net8.0\BCrypt.Net-Next.dll
