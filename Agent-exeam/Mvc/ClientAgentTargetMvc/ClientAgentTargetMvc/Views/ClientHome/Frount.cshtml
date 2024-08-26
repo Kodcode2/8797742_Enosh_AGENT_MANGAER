@@ -1,0 +1,66 @@
+﻿@model ClientAgentTargetMvc.ViewModels.FrontView
+
+@{
+    ViewData["Title"] = "Frount";
+}
+
+<h1>Frount</h1>
+
+<div>
+    <h4>FrontView</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AllAgent)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AllAgent)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AllActiveAgent)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AllActiveAgent)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AllTarget)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AllTarget)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AllActiveTarget)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AllActiveTarget)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AllMission)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AllMission)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AllActiveMission)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AllActiveMission)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AgentToTarget)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AgentToTarget)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SumAgentsOferToTargets)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SumAgentsOferToTargets)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

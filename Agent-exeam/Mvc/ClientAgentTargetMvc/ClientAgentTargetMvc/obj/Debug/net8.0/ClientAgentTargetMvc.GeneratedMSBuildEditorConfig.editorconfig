@@ -1,0 +1,95 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ClientAgentTargetMvc
+build_property.RootNamespace = ClientAgentTargetMvc
+build_property.ProjectDir = C:\Users\IMOE001\source\repos\AgentsExam\Mvc\ClientAgentTargetMvc\ClientAgentTargetMvc\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\IMOE001\source\repos\AgentsExam\Mvc\ClientAgentTargetMvc\ClientAgentTargetMvc
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Agents/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Agents/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/ClientHome/Dash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50SG9tZVxEYXNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/ClientHome/Frount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50SG9tZVxGcm91bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/ClientHome/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50SG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Grip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JpcFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Missions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Missions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Targets/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZ2V0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Targets/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZ2V0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IMOE001/source/repos/AgentsExam/Mvc/ClientAgentTargetMvc/ClientAgentTargetMvc/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-q957du4g8s

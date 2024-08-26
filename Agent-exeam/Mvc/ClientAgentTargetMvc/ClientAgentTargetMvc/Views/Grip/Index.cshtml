@@ -1,0 +1,52 @@
+﻿@model (List<ClientAgentTargetMvc.ViewModels.AgentVM> ,List<ClientAgentTargetMvc.ViewModels.TargetVM>)
+
+<table border="1">
+	@foreach (int x in Enumerable.Range(1, 100))
+	{
+        <tr> 
+            @foreach (int y in Enumerable.Range(1, 100))
+			{
+                <td>
+                    @foreach (var agent in Model.Item1)
+                    {
+                        @if (agent.X == @x && agent.Y == @y)
+                        {
+                            if(agent.Status == ClientAgentTargetMvc.ViewModels.AgentStatus.Active)
+                            {
+                                <p class="alive">@agent.Id%</p>
+
+                            }
+                            if (agent.Status == ClientAgentTargetMvc.ViewModels.AgentStatus.Sleping)
+                            {
+                                <p style="color:dimgrey">@agent.Id%</p>
+
+                            }
+                        }
+
+                    }
+                </td>
+                <td>
+                    @foreach (var target in Model.Item2)
+                    {
+                        @if (target.X == @x && target.Y == @y)
+                        {
+                            @if(target.Status == ClientAgentTargetMvc.ViewModels.TargetStatus.Alive)
+                            {
+                                <p class="alive" >@target.Id#</p>
+
+                            }
+                            @if (target.Status == ClientAgentTargetMvc.ViewModels.TargetStatus.Eliminated)
+                            {
+                                <p class="elimnate">@target.Id#</p>
+
+                            }
+                        }
+
+                    }
+                </td>
+			}
+
+			</tr>
+
+	}
+</table>

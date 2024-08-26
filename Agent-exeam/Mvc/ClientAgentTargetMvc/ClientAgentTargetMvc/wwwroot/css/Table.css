@@ -1,0 +1,12 @@
+﻿body {
+
+}
+.alive {
+    color : green
+}
+.elimnate{
+    color: red
+}
+.inProgres{
+    color : blue
+}

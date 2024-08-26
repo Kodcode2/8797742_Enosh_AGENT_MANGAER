@@ -1,0 +1,146 @@
+﻿@model IEnumerable<ClientAgentTargetMvc.Dto.MissionDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.XTarget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YTarget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NickName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.XAgent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YAgent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.agentStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MissionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeLeft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MissionStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MissionCompletedTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                    @if (item.TargetImage != null)
+                    {
+                        <img style="width: 8rem;" class="friend-image"
+                             src="@item.TargetImage" />
+                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.XTarget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YTarget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetStatus)
+            </td>
+            <td>
+                    @if (item.AgentImage != null)
+                    {
+                        <img style="width: 8rem;" class="friend-image"
+                             src="@item.AgentImage" />
+                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.XAgent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YAgent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.agentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MissionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeLeft)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MissionStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MissionCompletedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
