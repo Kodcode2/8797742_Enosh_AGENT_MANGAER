@@ -15,7 +15,7 @@ namespace AgentsRest.Service
         public async Task<AgentModel?> CreateNewAgentAsync(AgentDto agentDto)
         {
             var exists = await context.Agents.Where(x => x.Image == agentDto.PhotoUrl).ToListAsync();
-            if (exists.Count > 0) { throw new Exception($" Agent with the Image {agentDto.PhotoUrl} is alraedy exists"); }
+            //if (exists.Count > 0) { throw new Exception($" Agent with the Image {agentDto.PhotoUrl} is alraedy exists"); }
             AgentModel agentModel = new AgentModel()
             { 
                 Image = agentDto.PhotoUrl,

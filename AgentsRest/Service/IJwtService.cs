@@ -2,6 +2,6 @@
 {
     public interface IJwtService
     {
-        string CreateToken(string password);
+        string GnerateToken(string serverName);
     }
 }

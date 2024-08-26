@@ -1,4 +1,5 @@
 
+using AgentsRest.Middleware;
 using AgentsRest.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -23,22 +24,26 @@ namespace AgentsRest
             builder.Services.AddScoped<ITargetService, TargetService>();
             builder.Services.AddTransient(typeof(Lazy<>), typeof(Lazy<>));
             builder.Services.AddScoped<IMissionService, MissionService>();
-            builder.Services.AddDbContext<ApplicationDbContext>();
+			builder.Services.AddScoped<ILoginService, LoginService>();
+			builder.Services.AddScoped<IJwtService, JwtService>();
 
-            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new()
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                    ValidAudience = builder.Configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-                };
-            });
-            var app = builder.Build();
+
+			builder.Services.AddDbContext<ApplicationDbContext>();
+
+			builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+		   .AddJwtBearer(options =>
+		   {
+			   options.TokenValidationParameters = new()
+			   {
+				   ValidateIssuer = true,
+				   ValidateAudience = true,
+				   ValidateIssuerSigningKey = true,
+				   ValidIssuer = builder.Configuration["Jwt:Issuer"],
+				   ValidAudience = builder.Configuration["Jwt:Audience"],
+				   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+			   };
+		   });
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -48,7 +53,7 @@ namespace AgentsRest
             }
 
             app.UseHttpsRedirection();
-
+           // app.UseMiddleware<LoginMiddleware>();
             app.UseAuthorization();
 
 

@@ -21,5 +21,7 @@ namespace AgentsRest.Service
         // Task<MissionModel> CreateNewMission(int agentId, int targetId);
 
         Task<List<MissionDto>> GetMissionInclut();
+
+        Task<List<NewMissionDto>> GetMissionInclutAgentTarget();
     }
 }

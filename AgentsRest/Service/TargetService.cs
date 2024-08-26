@@ -12,7 +12,7 @@ namespace AgentsRest.Service
             public async Task<TargetModel?> CreateNewTargetAsync(TargetDto targetDto)
         {
             var exists = await context.Targets.Where(target => target.Image == targetDto.PhotoUrl).ToListAsync();
-            if (exists.Count > 0) { throw new Exception($" Target with the Image {targetDto.PhotoUrl} is alraedy exists"); }
+            //if (exists.Count > 0) { throw new Exception($" Target with the Image {targetDto.PhotoUrl} is alraedy exists"); }
             TargetModel targetModel = new TargetModel()
             {
                 TargetName = targetDto.Name,

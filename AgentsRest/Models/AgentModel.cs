@@ -24,6 +24,5 @@ namespace AgentsRest.Models
 
         public AgentStatus Status { get; set; } = AgentStatus.Sleping;
 
-       public List<MissionModel> Missions { get; set; } = [];
     }
 }

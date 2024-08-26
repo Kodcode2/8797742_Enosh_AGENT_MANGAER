@@ -10,22 +10,39 @@ namespace AgentsRest.Controllers
     [ApiController]
     public class MissionsController(IServiceProvider serviceProvider) : ControllerBase
     {
-        private IMissionService missionService => serviceProvider.GetRequiredService<IMissionService>();
-        private IAgentService agentService => serviceProvider.GetRequiredService<IAgentService>(); 
-        private ITargetService targetService => serviceProvider.GetRequiredService<ITargetService>();
+		// מייצר גישה לסרביס של משימות
+
+		private IMissionService missionService => serviceProvider.GetRequiredService<IMissionService>();
+		// מייצר גישה לסרביס של סוכנים
+
+		private IAgentService agentService => serviceProvider.GetRequiredService<IAgentService>();
+		// מייצר גישה לסרביס של מטרות
+
+		private ITargetService targetService => serviceProvider.GetRequiredService<ITargetService>();
 
         [HttpGet]
+        // מביא את כל המשימות
         public async Task<IActionResult> GetAllMission()
         {
             return Ok(await missionService.GetAllMissions());
         }
         [HttpGet("GetMissionInclut")]
+        //  ל VIEW בהתחלה שייצרתימביא משימות כולל סוכנים ומטרות 
         public async Task<IActionResult> GetMissionInclut()
         {
             
             return Ok(await missionService.GetMissionInclut());
         }
+        [HttpGet("MissionInclutAgentTarget")]
+		// מביא משימות כולל סוכנים ומטרות 
+
+		public async Task<IActionResult> GetMissionInclutAgentTarget()
+        {
+               var res =  await missionService.GetMissionInclutAgentTarget();
+               return Ok(res);
+        }
         [HttpPut("{id}")]
+        // עדכון סטטוס משימה 
         public async Task<IActionResult> UpdateMission(int id, [FromBody] StatusDto statusDto)
         {
             try

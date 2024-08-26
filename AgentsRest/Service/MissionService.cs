@@ -1,9 +1,11 @@
 ﻿using AgentsRest.Dto;
 using AgentsRest.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Immutable;
+using System.ComponentModel;
 using System.Reflection;
 using UserApi.Data;
 
@@ -303,5 +305,33 @@ namespace AgentsRest.Service
             }
             return missions;
         }
+
+        public async Task<List<NewMissionDto>> GetMissionInclutAgentTarget()
+        {
+            var res = await context.Missions.Include(a => a.Agent).Include(t => t.Target).ToListAsync();
+            List<NewMissionDto> missions = new();
+            missions = res.Select(x => convertMission(x)).ToList();
+            return missions;
+        }
+
+        public  NewMissionDto convertMission(MissionModel missionModel)
+
+        {
+            return new NewMissionDto() 
+            { 
+                Id = missionModel.Id,
+                AgentId = missionModel.AgentId,
+                Agent = missionModel.Agent,
+                TargetId = missionModel.TargetId,
+                Target = missionModel.Target,
+                TimeLeft = missionModel.TimeLeft,
+                MissionCompletedTime = missionModel.MissionCompletedTime,
+                MissionStatus= missionModel.MissionStatus,
+                Distance = ReyurnDistance(missionModel.Agent.X,missionModel.Target.X,missionModel.Agent.Y , missionModel.Target.Y),
+                
+            }
+            ;
+        }
+        
     }
 }

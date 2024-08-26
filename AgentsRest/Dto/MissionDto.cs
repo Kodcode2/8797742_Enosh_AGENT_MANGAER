@@ -6,7 +6,8 @@ namespace AgentsRest.Dto
     public class MissionDto
     {
 
-        public required string TargetName { get; set; }
+
+		public required string TargetName { get; set; }
 
         public required string Position { get; set; }
 

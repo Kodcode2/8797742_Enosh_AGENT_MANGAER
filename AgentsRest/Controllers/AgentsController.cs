@@ -1,5 +1,6 @@
 ﻿using AgentsRest.Dto;
 using AgentsRest.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -11,27 +12,35 @@ namespace AgentsRest.Controllers
     [ApiController]
     public class AgentsController(IServiceProvider serviceProvider) : ControllerBase
     { 
+        // מייצר גישה לסרביס של משימות
         private IMissionService missionService => serviceProvider.GetRequiredService<IMissionService>();
-        private IAgentService agentService => serviceProvider.GetRequiredService<IAgentService>();
+		// מייצר גישה לסרביס של סוכנים
+
+		private IAgentService agentService => serviceProvider.GetRequiredService<IAgentService>();
 
         [HttpGet]
+        // מביא את כל הסוכנים
         public async Task<IActionResult> GetAllAgent()
         {
             return Ok(await agentService.GetAllAgentAsync());
         }
         [HttpGet("GetAgentById")]
+        // מביא סוכן לפי ID
         public async Task<IActionResult> GetAgentById(int id)
         {
+            //הולך לפונקציה בסרביס שמחפשת סוכן לפי ID
             return Ok( await agentService.FindAgentByIdAsync(id));
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateNewAgent(AgentDto agentDto)
         {
+            //מייצר סוכן חדש
             try
             {
                 var agent = await agentService.CreateNewAgentAsync(agentDto);
                 return Created("new agent",new IdDto { Id = agent.Id});
-            }   
+            }  // אם אירעה שגיאה שולח שגיאה 
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -40,6 +49,7 @@ namespace AgentsRest.Controllers
 
         }
         [HttpPut("{id}/pin")]
+        // מעדכן סוכן ומציב אותו בתור מיקןם התחלתי
         public async Task<IActionResult> UpdateAgent(int id, [FromBody] LocationDto locationDto)
         {
             try
@@ -53,6 +63,7 @@ namespace AgentsRest.Controllers
             }
         }
         [HttpPut("{id}/move")]
+        // מוזיז סוכן לפי כיוונים
         public async Task<IActionResult> UpdateAgentDirection(int id, [FromBody] DirectionDto directionDto)
         
         {

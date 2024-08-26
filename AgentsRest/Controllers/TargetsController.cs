@@ -1,6 +1,7 @@
 ﻿using AgentsRest.Dto;
 using AgentsRest.Models;
 using AgentsRest.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +30,9 @@ namespace AgentsRest.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateNewTarget(TargetDto targetDto)
+		[Authorize]
+
+		public async Task<IActionResult> CreateNewTarget(TargetDto targetDto)
         {
             try
             {
