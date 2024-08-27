@@ -13,24 +13,31 @@ namespace AgentsRest.Controllers
     [ApiController]
     public class TargetsController(IServiceProvider serviceProvider) : ControllerBase
     {
-         private ITargetService targetService => serviceProvider.GetRequiredService<ITargetService>();
+		// מייצר גישה לסרביס של מטרות
 
-    private IMissionService missionService => serviceProvider.GetRequiredService<IMissionService>();
+		private ITargetService targetService => serviceProvider.GetRequiredService<ITargetService>();
+		// מייצר גישה לסרביס של משימות
+
+		private IMissionService missionService => serviceProvider.GetRequiredService<IMissionService>();
 
 
          [HttpGet]
+         // מביא את כל המטרות
         public async Task<IActionResult> GetAllTargetAsync()
         {
             return Ok(await targetService.GetAllTargetsAsync());
         }
         [HttpGet("GetTargetById")]
-        public async Task<IActionResult> GetAgentById(int id)
+		// מביא את המטרה עם ה ID 
+
+		public async Task<IActionResult> GetAgentById(int id)
         {
             return Ok(await targetService.FindTargetByIdAsync(id));
         }
 
         [HttpPost]
 		[Authorize]
+		// מייצר מטרות חדשות 
 
 		public async Task<IActionResult> CreateNewTarget(TargetDto targetDto)
         {
@@ -48,7 +55,9 @@ namespace AgentsRest.Controllers
 
         }
         [HttpPut("{id}/pin")]
-        public async Task<IActionResult> UpdateTarget(int id, [FromBody] LocationDto locationDto)
+		// מעדכן מטרה ומציב אותו בתור מיקןם התחלתי
+
+		public async Task<IActionResult> UpdateTarget(int id, [FromBody] LocationDto locationDto)
         {
             try
             {
@@ -61,7 +70,9 @@ namespace AgentsRest.Controllers
             }
         }
         [HttpPut("{id}/move")]
-        public async Task<IActionResult> UpdateTargetDirection(int id, [FromBody] DirectionDto directionDto)
+		// מוזיז מטרה לפי כיוונים
+
+		public async Task<IActionResult> UpdateTargetDirection(int id, [FromBody] DirectionDto directionDto)
         {
             try
             {

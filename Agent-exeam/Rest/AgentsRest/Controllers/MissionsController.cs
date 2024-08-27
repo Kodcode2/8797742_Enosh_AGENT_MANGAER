@@ -57,7 +57,11 @@ namespace AgentsRest.Controllers
             }
         }
         [HttpPost("update")]
-        public async Task<IActionResult> AgentsChasesTargets()
+		// כל המשימות עם סוכנים
+		//מצוותים, הסוכן נא לכיוון
+		//המטרה
+
+		public async Task<IActionResult> AgentsChasesTargets()
         {
             try
             {

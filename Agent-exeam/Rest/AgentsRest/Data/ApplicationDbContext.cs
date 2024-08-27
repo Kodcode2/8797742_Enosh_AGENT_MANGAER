@@ -17,13 +17,13 @@ namespace UserApi.Data
 
 
 
-
+        // יצירת קישור לDATABASE
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             }
 
-
+        // מגדיר קישוריות לDATABASE
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AgentModel>()
